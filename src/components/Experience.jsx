@@ -71,90 +71,114 @@ const Experience = () => {
           Experience
         </Typography>
 
-        <Stack spacing={3}>
+        <Stack spacing={3} sx={{ width: '100%' }}>
           {experiences.map((experience, index) => (
-            <Box key={index}>
+            <Box key={index} sx={{ width: '100%' }}>
               {index > 0 && (
                 <Divider 
                   sx={{ 
                     my: 3, 
                     borderColor: '#333333',
-                    opacity: 0.5 
+                    opacity: 0.5,
+                    width: '100%'
                   }} 
                 />
               )}
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <Box sx={{ flex: 1, pr: 3 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                    <Box
-                      sx={{
-                        background: experience.logo ? 'white' : 'linear-gradient(135deg, #FF4B2B 0%, #FF416C 100%)',
-                        p: experience.logo ? 0.5 : 1.5,
-                        borderRadius: '50%',
-                        border: '2px solid rgba(255, 255, 255, 0.1)',
-                        boxShadow: '0 4px 20px rgba(255, 75, 43, 0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: experience.logo ? '40px' : 'auto',
-                        height: experience.logo ? '40px' : 'auto',
-                      }}
-                    >
-                      {experience.logo ? (
-                        <img 
-                          src={experience.logo} 
-                          alt={`${experience.company} logo`}
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'contain',
-                            borderRadius: '50%',
-                          }}
-                        />
-                      ) : (
-                        <FaBriefcase size={20} color="#ffffff" />
-                      )}
-                    </Box>
-                    <Box>
-                      <Typography variant="h6" sx={{ color: '#ffffff', mb: 0.5 }}>
-                        {experience.title}
-                      </Typography>
-                      <Typography variant="subtitle1" sx={{ color: '#bdbdbd' }}>
-                        {experience.company}
-                      </Typography>
-                      <Typography variant="subtitle2" sx={{ color: '#808080' }}>
-                        {experience.location}
-                      </Typography>
-                    </Box>
+              <Box sx={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: { xs: 'flex-start', sm: 'center' },
+                justifyContent: 'space-between',
+                width: '100%',
+                mb: 2
+              }}>
+                <Box sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: 2, 
+                  mb: { xs: 2, sm: 0 },
+                  flex: '1 1 auto'
+                }}>
+                  <Box
+                    sx={{
+                      background: experience.logo ? 'white' : 'linear-gradient(135deg, #FF4B2B 0%, #FF416C 100%)',
+                      p: experience.logo ? 0.5 : 1.5,
+                      borderRadius: '50%',
+                      border: '2px solid rgba(255, 255, 255, 0.1)',
+                      boxShadow: '0 4px 20px rgba(255, 75, 43, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: experience.logo ? '40px' : 'auto',
+                      height: experience.logo ? '40px' : 'auto',
+                      flexShrink: 0
+                    }}
+                  >
+                    {experience.logo ? (
+                      <img 
+                        src={experience.logo} 
+                        alt={`${experience.company} logo`}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          borderRadius: '50%',
+                        }}
+                      />
+                    ) : (
+                      <FaBriefcase size={20} color="#ffffff" />
+                    )}
                   </Box>
-                  <Box sx={{ pl: 6 }}>
-                    <ul style={{ 
-                      paddingLeft: '20px', 
-                      margin: '0',
-                      color: '#bdbdbd'
-                    }}>
-                      {experience.description.map((item, idx) => (
-                        <li key={idx}>
-                          <Typography variant="body2" paragraph sx={{ color: '#bdbdbd' }}>
-                            {item}
-                          </Typography>
-                        </li>
-                      ))}
-                    </ul>
+                  <Box sx={{ flex: '1 1 auto' }}>
+                    <Typography variant="h6" sx={{ color: '#ffffff', mb: 0.5 }}>
+                      {experience.title}
+                    </Typography>
+                    <Typography variant="subtitle1" sx={{ color: '#bdbdbd' }}>
+                      {experience.company}
+                    </Typography>
+                    <Typography variant="subtitle2" sx={{ color: '#808080' }}>
+                      {experience.location}
+                    </Typography>
                   </Box>
                 </Box>
                 <Typography 
                   variant="h6" 
                   sx={{ 
                     color: '#ffffff',
-                    minWidth: '140px',
-                    textAlign: 'right',
+                    minWidth: { xs: 'auto', sm: '140px' },
+                    textAlign: { xs: 'left', sm: 'right' },
                     fontSize: '1rem',
-                    opacity: 0.8
+                    opacity: 0.8,
+                    flexShrink: 0
                   }}
                 >
                   {experience.date}
                 </Typography>
+              </Box>
+              <Box sx={{ width: '100%' }}>
+                <ul style={{ 
+                  listStyle: 'disc',
+                  paddingLeft: '20px', 
+                  margin: '0',
+                  color: '#bdbdbd',
+                  width: '100%'
+                }}>
+                  {experience.description.map((item, idx) => (
+                    <li key={idx} style={{ width: '100%' }}>
+                      <Typography 
+                        variant="body2" 
+                        paragraph 
+                        sx={{ 
+                          color: '#bdbdbd',
+                          width: '100%',
+                          pr: { xs: 0, sm: '140px' }  // Add right padding on desktop to align with the date
+                        }}
+                      >
+                        {item}
+                      </Typography>
+                    </li>
+                  ))}
+                </ul>
               </Box>
             </Box>
           ))}
