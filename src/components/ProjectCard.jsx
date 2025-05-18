@@ -5,9 +5,9 @@ const ProjectCard = ({ project }) => {
   return (
     <Box
       sx={{
-        backgroundColor: '#1a1a1a',
+        background: '#000000',
         borderRadius: '12px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        border: '1px solid #333333',
         overflow: 'hidden',
         height: '100%',
         display: 'flex',

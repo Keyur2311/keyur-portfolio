@@ -13,9 +13,9 @@ const ProfileCard = () => {
       <Card 
         sx={{ 
           mb: 4,
-          background: 'linear-gradient(145deg, #121212 0%, #000000 100%)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-          borderRadius: 4,
+          background: '#000000',
+          boxShadow: '10px 8px 32px rgba(0, 0, 0, 0.3)',
+          borderRadius: 3,
           border: '1px solid #333333',
         }}
       >

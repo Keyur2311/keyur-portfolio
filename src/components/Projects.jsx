@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title: "QuickTask",
-    description: "A tool for planning daily tasks, focusing on what’s important, and improving productivity with easy to-do list management.",
+    description: "A tool for planning daily tasks, focusing on what's important, and improving productivity with easy to-do list management.",
     technologies: ["React.js", "Node.js", "MongoDB"],
     github: "https://github.com/Keyur2311/QuickTask",
     live: "https://quicktask-app.vercel.app/",
@@ -36,10 +36,11 @@ const Projects = () => {
   return (
     <Box
       sx={{
-        backgroundColor: '#121212',
+        background: '#000000',
         borderRadius: '16px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        // border: '1px solid #333333',
         overflow: 'hidden',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
       }}
     >
       <Container

@@ -42,33 +42,32 @@ const Experience = () => {
       <Paper
         sx={{
           p: 4,
-          background: 'linear-gradient(145deg, #121212 0%, #000000 100%)',
+          background: '#000000',
           borderRadius: 4,
-          border: '1px solid #333333',
+          // border: '1px solid #333333',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
         }}
       >
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          sx={{
-            fontWeight: 'bold',
-            color: '#ffffff',
-            mb: 4,
-            position: 'relative',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              bottom: -8,
-              left: 0,
-              width: '60px',
-              height: '4px',
-              background: '#333333',
-              borderRadius: '2px',
-            },
-          }}
-        >
+          <Typography
+            variant="h4"
+            sx={{
+              fontSize: { xs: '1.75rem', md: '2rem' },
+              fontWeight: 700,
+              color: '#fff',
+              mb: 4,
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -8,
+                left: 0,
+                width: 48,
+                height: 4,
+                borderRadius: '2px',
+                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+              },
+            }}
+          >
           Experience
         </Typography>
 
