@@ -36,7 +36,19 @@ const Footer = () => {
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1, justifyContent: { xs: 'center', md: 'flex-start' } }}>
               <FaEnvelope size={16} color="#42A5F5" />
-              <Typography variant="body2" color="#bdbdbd">
+              <Typography 
+                component="a"
+                href="mailto:patelkk2311@gmail.com"
+                variant="body2" 
+                color="#bdbdbd"
+                sx={{ 
+                  textDecoration: 'none',
+                  '&:hover': {
+                    color: '#ffffff',
+                    textDecoration: 'underline'
+                  }
+                }}
+              >
                 patelkk2311@gmail.com
               </Typography>
             </Box>

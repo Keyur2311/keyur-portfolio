@@ -121,6 +121,21 @@ const darkTheme = createTheme({
   },
 });
 
+const fadeInUp = {
+  hidden: {
+    y: 60,
+    opacity: 0.3
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
@@ -141,7 +156,7 @@ function App() {
           maxWidth={false} 
           disableGutters
           sx={{
-            py: 4,
+            py: 2,
             width: '100%',
             flex: 1,
             display: 'flex',
@@ -155,17 +170,65 @@ function App() {
               minWidth: { xs: '95%', sm: '85%', md: '65%' },
               display: 'flex',
               flexDirection: 'column',
-              gap: 4,
+              gap: 2,
               mx: 'auto',
             }}
           >
             <ProfileCard />
-            <AboutMe />
-            <Experience />
-            <Education />
-            <Projects />
-            <Skills />
-            <Footer />
+            
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <AboutMe />
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Experience />
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Education />
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Projects />
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Skills />
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Footer />
+            </motion.div>
           </Box>
         </Container>
         <StickyLinks />
