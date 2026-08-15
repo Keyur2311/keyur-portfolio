@@ -1,20 +1,35 @@
 import { Typography, Box, Stack, Divider } from '@mui/material';
 import { FaBriefcase } from 'react-icons/fa';
-import onlinesalesLogo from '../assets/onlinesales_logo.jpeg';
+import osmosLogo from '../assets/osmos_logo.jpeg';
 import hexarLogo from '../assets/hexar_logo.jpeg';
 import { TEXT_PRI, TEXT_SEC, TEXT_MUTE, BORDER } from '../theme';
 
 const experiences = [
   {
-    title: "Software Development Intern",
-    company: "Onlinesales.ai",
+    title: "Software Engineer",
+    company: "osmos.ai",
     location: "Pune, India",
-    date: "Jan 2025 - Present",
+    date: "Jul 2025 - Present",
+    description: [
+      "Reduced campaign budget and status update latency from 2–3 hours to seconds by building Temporal-based asynchronous workflows for Meta and TikTok campaigns.",
+      "Integrated TikTok Ads as a new vendor, expanding the platform beyond existing Meta and Google integrations within a short timeline.",
+      "Scaled a food-commerce client from ₹0 to ₹1 Cr+ monthly revenue through Offsite Ads platform and campaign infrastructure.",
+      "Built an internal tool for food-commerce clients with Temporal workflows to automate restaurant onboarding, package creation/updates, and image approval.",
+      "Helped scale the newly formed Offsite team from 0 to 5 clients, supporting advertising integrations across Meta, Google, and TikTok.",
+      "Handled production on-call, bug fixes, and root-cause fixes across Offsite Ads workflows and vendor integrations.",
+    ],
+    logo: osmosLogo,
+  },
+  {
+    title: "Software Development Intern",
+    company: "osmos.ai",
+    location: "Pune, India",
+    date: "Jan 2025 - Jul 2025",
     description: [
       "Automated Facebook Ads workflows with Python, Ruby, and MongoDB/MySQL, streamlining campaign creation and targeting.",
       "Optimized ad template and audience reach systems, scaling backend for thousands of concurrent ad operations.",
     ],
-    logo: onlinesalesLogo,
+    logo: osmosLogo,
   },
   {
     title: "Software Development Intern",
