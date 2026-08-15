@@ -1,6 +1,9 @@
-import { ThemeProvider, createTheme, CssBaseline, Container, Box } from '@mui/material';
+import { ThemeProvider, CssBaseline, Container, Box } from '@mui/material';
 import { motion } from 'framer-motion';
+import { darkTheme, BG, NAV_HEIGHT } from './theme';
+import Navbar from './components/Navbar';
 import ProfileCard from './components/ProfileCard';
+import Section from './components/Section';
 import AboutMe from './components/AboutMe';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -9,151 +12,25 @@ import Skills from './components/Skills';
 import Footer from './components/Footer';
 import StickyLinks from './components/StickyLinks';
 
-// Create black theme
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#000000', // Pure black
-      light: '#212121',
-      dark: '#000000',
-    },
-    secondary: {
-      main: '#424242', // Dark grey
-    },
-    background: {
-      default: '#000000', // Pure black
-      paper: '#121212', // Very dark grey
-    },
-    text: {
-      primary: '#ffffff',
-      secondary: '#bdbdbd',
-    },
-  },
-  typography: {
-    fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    h1: {
-      fontSize: '2.5rem',
-      fontWeight: 600,
-      letterSpacing: '-0.02em',
-    },
-    h2: {
-      fontSize: '2rem',
-      fontWeight: 600,
-      letterSpacing: '-0.01em',
-    },
-    h3: {
-      fontSize: '1.75rem',
-      fontWeight: 600,
-      letterSpacing: '-0.01em',
-    },
-    h4: {
-      fontSize: '1.5rem',
-      fontWeight: 600,
-      letterSpacing: '-0.01em',
-    },
-    h5: {
-      fontSize: '1.25rem',
-      fontWeight: 600,
-      letterSpacing: '-0.01em',
-    },
-    h6: {
-      fontSize: '1.1rem',
-      fontWeight: 600,
-      letterSpacing: '-0.01em',
-    },
-    subtitle1: {
-      fontSize: '1rem',
-      lineHeight: 1.5,
-      letterSpacing: '-0.01em',
-    },
-    subtitle2: {
-      fontSize: '0.9375rem',
-      lineHeight: 1.5,
-      letterSpacing: '-0.01em',
-    },
-    body1: {
-      fontSize: '1rem',
-      lineHeight: 1.6,
-      letterSpacing: '-0.01em',
-    },
-    body2: {
-      fontSize: '0.9375rem',
-      lineHeight: 1.6,
-      letterSpacing: '-0.01em',
-    },
-    caption: {
-      fontSize: '0.875rem',
-      letterSpacing: '-0.01em',
-    },
-    button: {
-      fontSize: '0.9375rem',
-      textTransform: 'none',
-      letterSpacing: '-0.01em',
-      fontWeight: 500,
-    },
-  },
-  components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: 'linear-gradient(145deg, #121212 0%, #000000 100%)',
-          borderColor: '#333333',
-        },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderColor: '#333333',
-        },
-      },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          textRendering: 'optimizeLegibility',
-          WebkitFontSmoothing: 'antialiased',
-          MozOsxFontSmoothing: 'grayscale',
-        },
-      },
-    },
-  },
-});
-
-const fadeInUp = {
-  hidden: {
-    y: 60,
-    opacity: 0.3
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
+      <Navbar />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         style={{
-          background: '#000000',
+          background: BG,
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
         }}
       >
-        <Container 
-          maxWidth={false} 
+        <Container
+          maxWidth={false}
           disableGutters
           sx={{
             py: 2,
@@ -167,68 +44,39 @@ function App() {
           <Box
             sx={{
               width: '65%',
-              minWidth: { xs: '95%', sm: '85%', md: '65%' },
+              minWidth: { xs: '92%', sm: '85%', md: '65%' },
               display: 'flex',
               flexDirection: 'column',
-              gap: 2,
+              gap: 3,
               mx: 'auto',
+              // clear the floating navbar at the top and the sticky social bar at the bottom
+              pt: { xs: 2, sm: `${NAV_HEIGHT + 8}px` },
+              pb: { xs: 8, sm: 10 },
             }}
           >
             <ProfileCard />
-            
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
+
+            <Section id="about" title="About Me">
               <AboutMe />
-            </motion.div>
+            </Section>
 
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
+            <Section id="experience" title="Experience">
               <Experience />
-            </motion.div>
+            </Section>
 
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
+            <Section id="education" title="Education">
               <Education />
-            </motion.div>
+            </Section>
 
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
+            <Section id="projects" title="Projects">
               <Projects />
-            </motion.div>
+            </Section>
 
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
+            <Section id="skills" title="Skills">
               <Skills />
-            </motion.div>
+            </Section>
 
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <Footer />
-            </motion.div>
+            <Footer />
           </Box>
         </Container>
         <StickyLinks />

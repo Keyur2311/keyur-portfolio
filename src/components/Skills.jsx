@@ -1,119 +1,111 @@
-import { Paper, Typography, Box, Grid } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Typography, Box, Stack } from '@mui/material';
 import {
-  FaReact, FaNodeJs, FaPython,
-  FaAws, FaDatabase, FaGitAlt, FaJsSquare, FaNode
+  FaReact, FaNodeJs, FaPython, FaGitAlt, FaJsSquare, FaGithub,
 } from 'react-icons/fa';
-import { SiMongodb, SiCplusplus, SiExpress, SiSubversion, SiCloudinary } from 'react-icons/si';
+import {
+  SiCplusplus, SiExpress, SiMongodb, SiMysql, SiRedis,
+  SiGooglebigquery, SiPostman, SiRender, SiSubversion, SiTemporal,
+} from 'react-icons/si';
+import { VscVscode } from 'react-icons/vsc';
+import { BORDER, TEXT_SEC } from '../theme';
 
-const skills = [
-  { name: "React", icon: FaReact, color: '#61DAFB' },
-  { name: "JavaScript", icon: FaJsSquare, color: '#F7DF1E' },
-  { name: "C++", icon: SiCplusplus, color: '#00599C' },
-  { name: "Node.js", icon: FaNodeJs, color: '#339933' },
-  { name: "Express.js", icon: FaNode, color: '#ffffff' },
-  { name: "Python", icon: FaPython, color: '#3776AB' },
-  { name: "MongoDB", icon: SiMongodb, color: '#47A248' },
-  { name: "SQL", icon: FaDatabase, color: '#00758F' },
-  { name: "AWS", icon: FaAws, color: '#FF9900' },
-  { name: "Cloudinary", icon: SiCloudinary, color: '#3448C5' },
-  { name: "Git", icon: FaGitAlt, color: '#F05032' },
-  { name: "SVN", icon: SiSubversion, color: '#809CC9' },
+const skillGroups = [
+  {
+    label: 'Languages',
+    skills: [
+      { name: 'C++', icon: SiCplusplus, color: '#00599C' },
+      { name: 'Python', icon: FaPython, color: '#3776AB' },
+      { name: 'JavaScript', icon: FaJsSquare, color: '#F7DF1E' },
+    ],
+  },
+  {
+    label: 'Development',
+    skills: [
+      { name: 'React.js', icon: FaReact, color: '#61DAFB' },
+      { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
+      { name: 'Express.js', icon: SiExpress, color: '#ffffff' },
+    ],
+  },
+  {
+    label: 'Databases',
+    skills: [
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+      { name: 'Redis', icon: SiRedis, color: '#FF4438' },
+      { name: 'BigQuery', icon: SiGooglebigquery, color: '#669DF6' },
+    ],
+  },
+  {
+    label: 'Tools',
+    skills: [
+      { name: 'Git', icon: FaGitAlt, color: '#F05032' },
+      { name: 'GitHub', icon: FaGithub, color: '#ffffff' },
+      { name: 'SVN', icon: SiSubversion, color: '#809CC9' },
+      { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
+      { name: 'Render', icon: SiRender, color: '#46E3B7' },
+      { name: 'VS Code', icon: VscVscode, color: '#007ACC' },
+      { name: 'Temporal', icon: SiTemporal, color: '#6B7FD7' },
+    ],
+  },
 ];
 
 const Skills = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
-    >
-      <Paper
-        sx={{
-          p: 4,
-          background: '#000000',
-          borderRadius: 4,
-          // border: '1px solid #333333',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-        }}
-      >
-                 <Typography
-            variant="h4"
+    <Stack spacing={{ xs: 2.5, sm: 3 }}>
+      {skillGroups.map((group) => (
+        <Box
+          key={group.label}
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'flex-start', sm: 'center' },
+            gap: { xs: 1, sm: 3 },
+          }}
+        >
+          <Typography
+            variant="overline"
             sx={{
-              fontSize: { xs: '1.75rem', md: '2rem' },
-              fontWeight: 700,
-              color: '#fff',
-              mb: 3,
-              position: 'relative',
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                bottom: -8,
-                left: 0,
-                width: 48,
-                height: 4,
-                borderRadius: '2px',
-                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-              },
+              color: TEXT_SEC,
+              letterSpacing: '0.08em',
+              fontSize: '0.75rem',
+              minWidth: { sm: 130 }, // aligns the chip columns across rows
+              flexShrink: 0,
             }}
           >
-          Skills
-        </Typography>
-
-        <Grid container spacing={2}>
-          {skills.map((skill, index) => (
-            <Grid item xs={6} sm={4} md={3} key={index}>
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+            {group.label}
+          </Typography>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+            {group.skills.map((skill) => (
+              <Box
+                key={skill.name}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0.75,
+                  px: 1.25,
+                  py: 0.5,
+                  borderRadius: 999,
+                  border: `1px solid ${BORDER}`,
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  transition: 'all 0.25s ease',
+                  '&:hover': {
+                    borderColor: `${skill.color}55`,
+                    background: 'rgba(255, 255, 255, 0.07)',
+                    transform: 'translateY(-2px)',
+                  },
+                }}
               >
-                <Paper
-                  sx={{
-                    p: 1.5,
-                    height: '100%',
-                    background: 'linear-gradient(145deg, #121212 0%, #000000 100%)',
-                    borderRadius: 2,
-                    border: '1px solid #333333',
-                    transition: 'all 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                      borderColor: (theme) => skill.color + '40',
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1,
-                    }}
-                  >
-                    <skill.icon
-                      size={18}
-                      style={{
-                        color: skill.color,
-                      }}
-                    />
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: '#ffffff',
-                        fontSize: '0.9rem',
-                      }}
-                    >
-                      {skill.name}
-                    </Typography>
-                  </Box>
-                </Paper>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-      </Paper>
-    </motion.div>
+                <skill.icon size={14} style={{ color: skill.color }} />
+                <Typography sx={{ fontSize: '0.85rem', color: '#d0d0d0' }}>
+                  {skill.name}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Stack>
   );
 };
 
-export default Skills; 
+export default Skills;

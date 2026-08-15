@@ -27,7 +27,7 @@ const links = [
   {
     name: 'Email',
     icon: FaEnvelope,
-    url: 'patelkk2311@gmail.com',
+    url: 'mailto:patelkk2311@gmail.com',
   },
 
 ];
@@ -91,7 +91,9 @@ const StickyLinks = () => {
             gap: 2,
           }}
         >
-          {links.map((link) => (
+          {links.map((link) => {
+            const isMail = link.url.startsWith('mailto:');
+            return (
             <motion.div
               key={link.name}
               variants={linkVariants}
@@ -107,8 +109,8 @@ const StickyLinks = () => {
                 <IconButton
                   component="a"
                   href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={isMail ? undefined : '_blank'}
+                  rel={isMail ? undefined : 'noopener noreferrer'}
                   size="small"
                   sx={{
                     width: 36,
@@ -126,7 +128,8 @@ const StickyLinks = () => {
                 </IconButton>
               </Tooltip>
             </motion.div>
-          ))}
+            );
+          })}
         </Box>
       </Box>
     </Box>

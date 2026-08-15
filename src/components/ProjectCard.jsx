@@ -1,28 +1,43 @@
 import { Box, Typography, Chip, IconButton } from '@mui/material';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { CARD, BORDER, BORDER_STRONG, TEXT_PRI, accentGradient } from '../theme';
 
 const ProjectCard = ({ project }) => {
   return (
     <Box
       sx={{
-        background: '#000000',
+        background: CARD,
         borderRadius: '12px',
-        border: '1px solid #333333',
+        border: `1px solid ${BORDER}`,
         overflow: 'hidden',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
+        position: 'relative',
         transition: 'all 0.3s ease',
         '&:hover': {
           transform: 'translateY(-8px)',
-          boxShadow: '0 12px 24px rgba(0, 0, 0, 0.3)',
-          borderColor: 'rgba(255, 255, 255, 0.2)',
-        }
+          boxShadow: '0 16px 40px rgba(0, 0, 0, 0.5)',
+          borderColor: BORDER_STRONG,
+          '& .accent-bar': { opacity: 1 },
+        },
       }}
     >
-      <Box sx={{ p: 2.5 }}>
+      {/* Accent bar — sits on top, intensifies on hover */}
+      <Box
+        className="accent-bar"
+        sx={{
+          height: 3,
+          width: '100%',
+          background: accentGradient(),
+          opacity: 0.35,
+          transition: 'opacity 0.3s ease',
+        }}
+      />
+
+      <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', flex: 1 }}>
         {/* Project Title */}
-        <Typography 
+        <Typography
           variant="h6"
           sx={{
             fontSize: '1.125rem',
@@ -49,8 +64,8 @@ const ProjectCard = ({ project }) => {
         </Typography>
 
         {/* Tech Stack */}
-        <Box 
-          sx={{ 
+        <Box
+          sx={{
             display: 'flex',
             flexWrap: 'wrap',
             gap: 1,
@@ -65,9 +80,9 @@ const ProjectCard = ({ project }) => {
               sx={{
                 height: '22px',
                 fontSize: '0.75rem',
-                backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
                 color: '#d0d0d0',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                border: `1px solid ${BORDER}`,
                 '&:hover': {
                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 },
@@ -84,7 +99,7 @@ const ProjectCard = ({ project }) => {
             gap: 1.5,
             mt: 'auto',
             pt: 1,
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            borderTop: `1px solid ${BORDER}`,
           }}
         >
           <IconButton
@@ -92,6 +107,7 @@ const ProjectCard = ({ project }) => {
             target="_blank"
             rel="noopener noreferrer"
             size="small"
+            aria-label={`${project.title} GitHub repository`}
             sx={{
               backgroundColor: 'rgba(255, 255, 255, 0.06)',
               color: '#fff',
@@ -108,8 +124,9 @@ const ProjectCard = ({ project }) => {
             target="_blank"
             rel="noopener noreferrer"
             size="small"
+            aria-label={`${project.title} live demo`}
             sx={{
-              background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+              background: accentGradient(),
               color: '#fff',
               padding: '6px',
               '&:hover': {
@@ -125,4 +142,4 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-export default ProjectCard; 
+export default ProjectCard;

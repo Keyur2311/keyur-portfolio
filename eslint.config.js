@@ -23,7 +23,10 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // ESLint core `no-unused-vars` doesn't count the object of a JSX
+      // member expression (e.g. `motion` in `<motion.div>`) as used, so
+      // allow the framer-motion `motion` import here. It is always used.
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]|^motion$' }],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

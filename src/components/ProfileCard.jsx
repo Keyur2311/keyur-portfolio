@@ -2,6 +2,7 @@ import { Box, Card, CardContent, Typography, Avatar, Stack, IconButton, Tooltip 
 import { motion } from 'framer-motion';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import profilePic from '../assets/KEYUR_PROFILE_PIC2.png';
+import { CARD, BORDER } from '../theme';
 
 const ProfileCard = () => {
   return (
@@ -11,12 +12,12 @@ const ProfileCard = () => {
       transition={{ duration: 0.5 }}
     >
       <Card 
-        sx={{ 
+        sx={{
           mb: 2,
-          background: '#000000',
+          background: CARD,
           boxShadow: '10px 8px 32px rgba(0, 0, 0, 0.3)',
           borderRadius: 3,
-          border: '1px solid #333333',
+          border: `1px solid ${BORDER}`,
           position: 'relative',
         }}
       >
@@ -72,10 +73,10 @@ const ProfileCard = () => {
           <Box sx={{ display: 'flex', gap: 3, alignItems: 'center', flexWrap: 'wrap' }}>
             <motion.div whileHover={{ scale: 1.05 }}>
               <Avatar
-                sx={{ 
-                  width: 120, 
+                sx={{
+                  width: 120,
                   height: 120,
-                  border: '2px solid #333333',
+                  border: `2px solid ${BORDER}`,
                   boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
                 }}
                 alt="Keyur"
